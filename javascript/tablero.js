@@ -22,15 +22,30 @@ function inicializarTablero() {
 function dibujarTablero(ctx) {
     var x = 0; //posicion inicial en el canvas
     var y = 0; //posicion inicial en el canvas
+    var xCirculo = 0; //Definimos la posicion x, y de inicio del circulo a dibujar
+    var yCirculo = 0;
+    var xTexto = 0; //Definimos la posicion de x, y del texto
+    var yTexto = 0;
+    var radio = tablero.celdaAncho/2; //El radio del circulo es la mitad de la celda, ya es un cuadrado
+    var anguloInicio = 0;
+    var anguloFin = 2 * Math.PI;
             
     tablero.celdas.forEach( function( columna, indiceY ) {
         columna.forEach( function( fila, indiceX ) {
             x = indiceY * tablero.celdaAncho; //Damos ancho y alto a cada celda en las posicion x , y de 40 para crear en grid o tabla
             y = indiceX * tablero.celdaAlto;
             
+            xCirculo = x + (tablero.celdaAncho/2); //Definimos los puntos x,y dentro de la celda para poder dibujar el circulo.
+            yCirculo = y + (tablero.celdaAlto/2);
+                        
+            xTexto = x + (tablero.celdaAncho/4);
+            yTexto = y + (tablero.celdaAlto/2);
+
+            ctx.beginPath();
+            ctx.arc(xCirculo, yCirculo, radio, anguloInicio, anguloFin);
+            ctx.stroke();
             ctx.font = "8px Arial";
-            ctx.fillText( fila ,x,y);
+            ctx.fillText( fila ,xTexto,yTexto);
         });
     });
 }
-
