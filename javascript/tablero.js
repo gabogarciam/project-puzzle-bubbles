@@ -18,3 +18,19 @@ function inicializarTablero() {
     }
 }
 
+// Dibujamos el tablero
+function dibujarTablero(ctx) {
+    var x = 0; //posicion inicial en el canvas
+    var y = 0; //posicion inicial en el canvas
+            
+    tablero.celdas.forEach( function( columna, indiceY ) {
+        columna.forEach( function( fila, indiceX ) {
+            x = indiceY * tablero.celdaAncho; //Damos ancho y alto a cada celda en las posicion x , y de 40 para crear en grid o tabla
+            y = indiceX * tablero.celdaAlto;
+            
+            ctx.font = "8px Arial";
+            ctx.fillText( fila ,x,y);
+        });
+    });
+}
+
