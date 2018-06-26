@@ -36,6 +36,7 @@ window.onload = function () {
         canvas.setAttribute("height", "628px"); //Seteamos el alto
         document.body.appendChild(canvas); //Lo agregamos al body
         ctx = canvas.getContext("2d"); //Definimos el contexto del canvas
+        playGame(ctx);
     }
 
     function handleStartGameOver() {//Recuerda llamar este evento al finalizar el game!!!!
